@@ -1,4 +1,4 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "image": "mcr.microsoft.com/devcontainers/archlinux:latest",
   "features": {}
 }
