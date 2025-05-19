@@ -1,0 +1,6 @@
+## GENERAL ##
+target/
+
+## CODE EDITORS ##
+.vscode/*
+!.vscode/settings.json

@@ -1,0 +1,16 @@
+{
+  "language_menu_option": "Мова",
+  "exit_option": "Вийти",
+  "setup_header": "Підготовка до запуску",
+  "disk_config": "Налаштування диску",
+  "bootloader_select": "Виберіть завантажувач",
+  "root_password": "Root пароль",
+  "setup_user": "Налаштування користувача",
+  "install_archlinux": "Встановити archlinux",
+  "select_language_header": "Виберіть вашу мову",
+  "disk_management": "Керування дисками",
+  "mounting": "Монтування диска",
+  "help_menu1": "Available commands:\n     help - Display this help message\n      list - List all available disks\n      cfdisk - utility for creating and modifying disk partitions\n      format - to run cmd with foramte support\n      exit - Back to disk menu",
+  "help_menu2": "Available commands:\nhelp - Display this help message\nlist - List all available disks\ncommand will look like this:\n 1. for fat mkfs.fat -F32 /dev/sda1,\n 2. mkswap/mkfs.ext4 /dev/sda2\nmkfs.fat - Create a fat filesystem for it use -F32 or -F16\nmkfs.ext4 - Create an ext4 filesystem\nmkfs.btrfs - Create a Btrfs filesystem\nmkswap - Create a to make swap filesystem\n exit - Back to disk menu",
+  "help_menu3": ""
+}

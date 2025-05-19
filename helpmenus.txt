@@ -1,0 +1,1 @@
+ "Available commands:\n     help - Display this help message\n      list - List all available disks\n      cfdisk - utility for creating and modifying disk partitions\n      format - to run cmd with foramte support\n      exit - Back to disk menu"

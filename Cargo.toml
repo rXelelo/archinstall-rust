@@ -1,0 +1,12 @@
+[package]
+name = "archinstall-rs"
+edition = "2024"
+version = "0.1.0"
+authors = ["rXelelo", "Volodia Kraplich(v1mkss)"]
+repository = "https://gitlab.com/rxelelo/archisntall-by-rxelelo"
+
+[dependencies]
+ncurses = { version = "6.0.1", features = ["wide"] }
+pancurses = { version = "0.17.0", features = ["wide"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
