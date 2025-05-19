@@ -11,8 +11,8 @@ use crate::{
   },
 };
 pub fn menu_install(lang: &str) {
+  let mut installvalue = InstallValue::default();
   loop {
-    let mut installvalue = InstallValue::default();
     let localized_strings = load_localization(lang).expect("Failed to load localization");
     let _ = ncurses::setlocale(ncurses::LcCategory::all, "uk_UA.UTF-8");
     let window = pancurses::initscr();
@@ -120,8 +120,9 @@ pub fn menu_install(lang: &str) {
           installvalue.loader,
           installvalue.rootpsw,
           installvalue.username,
-          installvalue.userpsw,
+          installvalue.userpsw
         );
+        break;
       }
       8 => {
         exit(0);
