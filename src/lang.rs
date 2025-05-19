@@ -20,6 +20,7 @@ pub struct LocalizationStrings {
   pub help_menu1: String,
   pub help_menu2: String,
   pub help_menu3: String,
+  pub timezone: String
 }
 
 // Function to load localization strings from a JSON file based on the language code.

@@ -8,6 +8,7 @@ use crate::{
     display::MenuLng, installopt::bootloader::bootloader, installopt::disk::InstMenu,
     installopt::root::rootget, installopt::user::usrname, installopt::user::usrpsw,
     instscript::installer::install_arch, language::menu_lang, val::InstallValue,
+    installopt::timezone::timezone
   },
 };
 pub fn menu_install(lang: &str) {
@@ -24,7 +25,7 @@ pub fn menu_install(lang: &str) {
     let (screen_height, screen_width) = window.get_max_yx();
 
     let width = 28;
-    let height = 12;
+    let height = 13;
     let startx = (screen_width - width) / 2;
     let starty = (screen_height - height) / 2;
 
@@ -37,6 +38,7 @@ pub fn menu_install(lang: &str) {
       localized_strings.bootloader_select.clone(),
       localized_strings.root_password.clone(),
       localized_strings.setup_user.clone(),
+      localized_strings.timezone.clone(),
       "".to_string(),
       localized_strings.install_archlinux.clone(),
       localized_strings.exit_option.clone(),
@@ -114,17 +116,21 @@ pub fn menu_install(lang: &str) {
         println!("Write user password");
         installvalue.userpsw = usrpsw();
       }
-      7 => {
+      6 => {
+       installvalue.timezone = timezone(lang);
+      }
+      8 => {
         let _ = Command::new("clear").status();
         install_arch(
           installvalue.loader,
           installvalue.rootpsw,
           installvalue.username,
-          installvalue.userpsw
+          installvalue.userpsw,
+          installvalue.timezone
         );
         break;
       }
-      8 => {
+      9 => {
         exit(0);
       }
       _ => (),
