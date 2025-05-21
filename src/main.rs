@@ -12,4 +12,5 @@ fn main() {
   let _ = Command::new("setfont").args(["cyr-sun16"]).status();
   // Start the language selection menu
   menu_lang();
+  //balls
 }
