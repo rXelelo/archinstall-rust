@@ -13,7 +13,7 @@ pub fn diskmngterm(lang: &str) {
       .read_line(&mut input)
       .expect("Failed to read line");
     let command = input.trim();
-    if command == "help" {
+    if command == "help" || command == "" {
       let localized_strings = load_localization(lang).expect("Failed to load localization");
       println!("{}", localized_strings.help_menu1.clone(),);
     } else if command == "list" {
@@ -24,6 +24,10 @@ pub fn diskmngterm(lang: &str) {
       InstMenu::diskmenu(lang);
     } else if command == "format" {
       formate(lang);
+    } else if command != "" {
+      let localized_strings = load_localization(lang).expect("Failed to load localization");
+      println!("{}", localized_strings.help_menu1.clone(),);
     }
+
   }
 }

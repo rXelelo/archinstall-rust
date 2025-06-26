@@ -80,8 +80,8 @@ pub(crate) fn menu_lang() {
   ncurses::endwin();
 
   match choice {
-    1 => menu_install("en"),
-    2 => menu_install("uk"),
+    1 => menu_install("en", 0),
+    2 => menu_install("uk", 0),
     _ => (),
   }
 }

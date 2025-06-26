@@ -8,10 +8,10 @@ use crate::{
     display::MenuLng, installopt::bootloader::bootloader, installopt::disk::InstMenu,
     installopt::root::rootget, installopt::user::usrname, installopt::user::usrpsw,
     instscript::installer::install_arch, language::menu_lang, val::InstallValue,
-    installopt::timezone::timezone
+    installopt::timezone::timezone, installopt::locale::locale
   },
 };
-pub fn menu_install(lang: &str) {
+pub fn menu_install(lang: &str , err: i32) {
   let mut installvalue = InstallValue::default();
   loop {
     let localized_strings = load_localization(lang).expect("Failed to load localization");
@@ -25,7 +25,7 @@ pub fn menu_install(lang: &str) {
     let (screen_height, screen_width) = window.get_max_yx();
 
     let width = 28;
-    let height = 13;
+    let height = 15;
     let startx = (screen_width - width) / 2;
     let starty = (screen_height - height) / 2;
 
@@ -34,6 +34,7 @@ pub fn menu_install(lang: &str) {
 
     let menu_items = vec![
       localized_strings.language_menu_option.clone(),
+      localized_strings.locale.clone(),
       localized_strings.disk_config.clone(),
       localized_strings.bootloader_select.clone(),
       localized_strings.root_password.clone(),
@@ -55,6 +56,7 @@ pub fn menu_install(lang: &str) {
         &menu_items,
         highlight,
         &localized_strings.setup_header,
+        err
       );
 
       match menu_win.getch() {
@@ -99,38 +101,42 @@ pub fn menu_install(lang: &str) {
         menu_lang();
       }
       2 => {
-        // disk
-        InstMenu::diskmenu(lang);
+        locale(lang, err);
       }
       3 => {
-        installvalue.loader = bootloader(lang);
+// disk
+        InstMenu::diskmenu(lang);
       }
       4 => {
+        installvalue.loader = bootloader(lang);
+      }
+      5 => {
         println!("Write root password");
         installvalue.rootpsw = rootget();
       }
-      5 => {
+      6 => {
         println!("Write user name");
         installvalue.username = usrname();
         println!("{}", installvalue.username);
         println!("Write user password");
         installvalue.userpsw = usrpsw();
       }
-      6 => {
+      7 => {
        installvalue.timezone = timezone(lang);
       }
-      8 => {
+      9 => {
         let _ = Command::new("clear").status();
         install_arch(
           installvalue.loader,
           installvalue.rootpsw,
           installvalue.username,
           installvalue.userpsw,
-          installvalue.timezone
-        );
-        break;
+          installvalue.timezone,
+          lang
+          );
+          break;
       }
-      9 => {
+      10 => {
         exit(0);
       }
       _ => (),

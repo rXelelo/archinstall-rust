@@ -4,3 +4,5 @@ pub mod diskinst;
 pub mod root;
 pub mod user;
 pub mod timezone;
+pub mod tzlist;
+pub mod locale;

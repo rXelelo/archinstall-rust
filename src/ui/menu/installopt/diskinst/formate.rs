@@ -4,6 +4,7 @@ use std::process::Command;
 
 pub fn formate(lang: &str) {
   loop {
+    println!("Format Mode ENABLED");
     print!("> ");
     io::stdout().flush().expect("Failed to flush stdout");
 
@@ -16,6 +17,7 @@ pub fn formate(lang: &str) {
       let localized_strings = load_localization(lang).expect("Failed to load localization");
       println!("{}", localized_strings.help_menu2.clone(),);
     } else if command == "exit" {
+      println!("Format Mode DISABLED");
       diskmngterm(lang);
     } else if command == "list" {
       println!("Listing all available disks:");

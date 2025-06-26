@@ -7,6 +7,7 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 pub struct LocalizationStrings {
   pub language_menu_option: String,
+  pub locale: String,
   pub exit_option: String,
   pub setup_header: String,
   pub disk_config: String,
@@ -20,7 +21,9 @@ pub struct LocalizationStrings {
   pub help_menu1: String,
   pub help_menu2: String,
   pub help_menu3: String,
-  pub timezone: String
+  pub timezone: String,
+  pub keyboard_layout: String,
+  pub locale_language: String
 }
 
 // Function to load localization strings from a JSON file based on the language code.

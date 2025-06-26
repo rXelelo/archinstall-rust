@@ -34,6 +34,7 @@ pub fn bootloader(lang: &str) -> String {
       &menu_items,
       highlight,
       &localized_strings.bootloader_select,
+      0
     );
 
     match menu_win.getch() {

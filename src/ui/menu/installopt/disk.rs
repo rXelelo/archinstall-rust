@@ -90,7 +90,7 @@ impl InstMenu {
       2 => {
         mount(lang);
       }
-      _ => menu_install(lang),
+      _ => menu_install(lang, 0),
     }
   }
 }
